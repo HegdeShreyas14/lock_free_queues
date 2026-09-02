@@ -89,11 +89,64 @@ void test_spsc_single_thread()
     CHECK(!q.pop().has_value());
 }
 
-int main(){
+void test_wraparound()
+{
+    SPSCQueue<int, 4> q;
+    for (int round = 0; round < 100; ++round)
+    {
+        CHECK(q.push(round * 3 + 0));
+        CHECK(q.push(round * 3 + 1));
+        CHECK(q.push(round * 3 + 2));
 
+        auto v1 = q.pop();
+        CHECK(v1.has_value());
+
+        if (v1.has_value())
+            CHECK(v1.value() == round * 3 + 0);
+
+        auto v2 = q.pop();
+        CHECK(v2.has_value());
+
+        if (v2.has_value())
+            CHECK(v2.value() == round * 3 + 1);
+
+        auto v3 = q.pop();
+        CHECK(v3.has_value());
+
+        if (v3.has_value())
+            CHECK(v3.value() == round * 3 + 2);
+
+        CHECK(!q.pop().has_value());
+    }
+}
+
+void threaded_spsc_test(){
+    constexpr int kc = 1'000'000;
+    SPSCQueue<int , 1024> q;
+    std::thread producer([&](){
+        for(int i = 0;i < kc;i ++){
+            while(!(q.push(i))){
+                //spin
+            }
+        }
+    });
+
+    int64_t sum = 0;
+    std::thread consumer([&](){
+        for(int i  = 0;i < kc;i ++){
+            std::optional<int> res;
+
+            while(!(res = q.pop()))
+        }
+    }
+
+}
+
+int main(){
         test_push_pop();
         test_fifo_order();
         test_spsc_single_thread();
+        test_wraparound();
         if (g_fail == 0)
         {
             std::cout << "All tests passed!\n";
