@@ -25,7 +25,7 @@ public:
     SPSCQueue& operator = (const SPSCQueue&) = delete;
 
 
-    bool pusher(const T& val) noexcept{ // pushing elements only for the producer
+    bool push(const T& val) noexcept{ // pushing elements only for the producer
         const std::size_t tail = tail_.load(std::memory_order_relaxed);
         const std::size_t next_tail = next(tail);
         if(next_tail == head_.load(std::memory_order_acquire))
@@ -37,7 +37,7 @@ public:
         return true;
     }
 
-    std::optional<T> popper() noexcept { // popping only for the consumer , if empty then returns std::nullopt
+    std::optional<T> pop() noexcept { // popping only for the consumer , if empty then returns std::nullopt
         const std::size_t head = head_.load(std::memory_order_relaxed);
         if(head == tail_.load(std::memory_order_acquire)){
             return std::nullopt;
