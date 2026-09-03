@@ -42,7 +42,7 @@ public:
         if(head == tail_.load(std::memory_order_acquire)){
             return std::nullopt;
         }
-        T result = buffer_[head];             // read the value OUT (this was missing)
+        T result = buffer_[head];
         head_.store(next(head), std::memory_order_release);
         return result;
     }

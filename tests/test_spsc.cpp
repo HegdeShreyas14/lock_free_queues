@@ -136,9 +136,22 @@ void threaded_spsc_test(){
         for(int i  = 0;i < kc;i ++){
             std::optional<int> res;
 
-            while(!(res = q.pop()))
+            while(!(res = q.pop()).has_value()){
+                // spin wait
+            }
+            sum += res.value();
         }
-    }
+    });
+    producer.join();
+    consumer.join();
+
+    const int64_t expected =
+            static_cast<int64_t>(kc) * (kc - 1) / 2;
+
+        CHECK(sum == expected);
+
+        // Queue should be empty after consumer has received all elements
+        CHECK(!q.pop().has_value());
 
 }
 
@@ -147,6 +160,7 @@ int main(){
         test_fifo_order();
         test_spsc_single_thread();
         test_wraparound();
+        threaded_spsc_test();
         if (g_fail == 0)
         {
             std::cout << "All tests passed!\n";

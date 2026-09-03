@@ -1,0 +1,5 @@
+/home/hegde/Desktop/lock_free_queues/build/CMakeFiles/test_spsc.dir
+/home/hegde/Desktop/lock_free_queues/build/CMakeFiles/test_spsc_tsan.dir
+/home/hegde/Desktop/lock_free_queues/build/CMakeFiles/test.dir
+/home/hegde/Desktop/lock_free_queues/build/CMakeFiles/edit_cache.dir
+/home/hegde/Desktop/lock_free_queues/build/CMakeFiles/rebuild_cache.dir

@@ -11,3 +11,5 @@ kCacheLine is the variable used to define 64 bytes as the value
 - both head and tail have separate cache line to prevent false sharing , if on the same cache line then the consumer can over write the producer and then go on a loop of invalidating the other , this is false sharing
 
 - memory_order_acquire makes anything published before that block visible to the thread , like if a value written by a release is seen then the operations done before that release is also visible ; establishes this via the release-acquire synchronisation relationship
+
+- verified memory ordering correct under ThreadSanitizer; single-threaded tests can't catch ordering bugs because there's no second thread to observe reordering
