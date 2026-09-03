@@ -64,6 +64,7 @@ CMAKE_BINARY_DIR = /home/hegde/Desktop/lock_free_queues/build
 
 # The main recursive "all" target.
 all: CMakeFiles/test_spsc.dir/all
+all: CMakeFiles/benchmark.dir/all
 all: CMakeFiles/test_spsc_tsan.dir/all
 .PHONY : all
 
@@ -73,6 +74,7 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/test_spsc.dir/clean
+clean: CMakeFiles/benchmark.dir/clean
 clean: CMakeFiles/test_spsc_tsan.dir/clean
 .PHONY : clean
 
@@ -83,7 +85,7 @@ clean: CMakeFiles/test_spsc_tsan.dir/clean
 CMakeFiles/test_spsc.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_spsc.dir/build.make CMakeFiles/test_spsc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_spsc.dir/build.make CMakeFiles/test_spsc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hegde/Desktop/lock_free_queues/build/CMakeFiles --progress-num=1,2 "Built target test_spsc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hegde/Desktop/lock_free_queues/build/CMakeFiles --progress-num=3,4 "Built target test_spsc"
 .PHONY : CMakeFiles/test_spsc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -103,13 +105,39 @@ CMakeFiles/test_spsc.dir/clean:
 .PHONY : CMakeFiles/test_spsc.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/benchmark.dir
+
+# All Build rule for target.
+CMakeFiles/benchmark.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hegde/Desktop/lock_free_queues/build/CMakeFiles --progress-num=1,2 "Built target benchmark"
+.PHONY : CMakeFiles/benchmark.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/benchmark.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hegde/Desktop/lock_free_queues/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/benchmark.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hegde/Desktop/lock_free_queues/build/CMakeFiles 0
+.PHONY : CMakeFiles/benchmark.dir/rule
+
+# Convenience name for target.
+benchmark: CMakeFiles/benchmark.dir/rule
+.PHONY : benchmark
+
+# clean rule for target.
+CMakeFiles/benchmark.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/clean
+.PHONY : CMakeFiles/benchmark.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_spsc_tsan.dir
 
 # All Build rule for target.
 CMakeFiles/test_spsc_tsan.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_spsc_tsan.dir/build.make CMakeFiles/test_spsc_tsan.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_spsc_tsan.dir/build.make CMakeFiles/test_spsc_tsan.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hegde/Desktop/lock_free_queues/build/CMakeFiles --progress-num=3,4 "Built target test_spsc_tsan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/hegde/Desktop/lock_free_queues/build/CMakeFiles --progress-num=5,6 "Built target test_spsc_tsan"
 .PHONY : CMakeFiles/test_spsc_tsan.dir/all
 
 # Build rule for subdir invocation for target.

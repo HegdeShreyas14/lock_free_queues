@@ -24,7 +24,15 @@ target_link_libraries(test_spsc PRIVATE Threads::Threads)
 target_compile_options(test_spsc PRIVATE -Wall -Wextra)
 add_test(NAME test_spsc COMMAND test_spsc)
 
+# --- Benchmark target ---
+# Optimized build; run manually to get throughput numbers (not a ctest test).
+add_executable(benchmark benchmarks/benchmark.cpp)
+target_include_directories(benchmark PRIVATE include)
+target_link_libraries(benchmark PRIVATE Threads::Threads)
+target_compile_options(benchmark PRIVATE -O2)
 
+# --- ThreadSanitizer target ---
+# Same test sources, instrumented to detect data races.
 # Build + run with:  cmake --build . --target test_spsc_tsan && ./test_spsc_tsan
 add_executable(test_spsc_tsan tests/test_spsc.cpp)
 target_include_directories(test_spsc_tsan PRIVATE include)

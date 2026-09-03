@@ -140,6 +140,19 @@ test_spsc/fast:
 .PHONY : test_spsc/fast
 
 #=============================================================================
+# Target rules for targets named benchmark
+
+# Build rule for target.
+benchmark: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 benchmark
+.PHONY : benchmark
+
+# fast build rule for target.
+benchmark/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/build
+.PHONY : benchmark/fast
+
+#=============================================================================
 # Target rules for targets named test_spsc_tsan
 
 # Build rule for target.
@@ -151,6 +164,30 @@ test_spsc_tsan: cmake_check_build_system
 test_spsc_tsan/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_spsc_tsan.dir/build.make CMakeFiles/test_spsc_tsan.dir/build
 .PHONY : test_spsc_tsan/fast
+
+benchmarks/benchmark.o: benchmarks/benchmark.cpp.o
+.PHONY : benchmarks/benchmark.o
+
+# target to build an object file
+benchmarks/benchmark.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/benchmarks/benchmark.cpp.o
+.PHONY : benchmarks/benchmark.cpp.o
+
+benchmarks/benchmark.i: benchmarks/benchmark.cpp.i
+.PHONY : benchmarks/benchmark.i
+
+# target to preprocess a source file
+benchmarks/benchmark.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/benchmarks/benchmark.cpp.i
+.PHONY : benchmarks/benchmark.cpp.i
+
+benchmarks/benchmark.s: benchmarks/benchmark.cpp.s
+.PHONY : benchmarks/benchmark.s
+
+# target to generate assembly for a file
+benchmarks/benchmark.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/benchmark.dir/build.make CMakeFiles/benchmark.dir/benchmarks/benchmark.cpp.s
+.PHONY : benchmarks/benchmark.cpp.s
 
 tests/test_spsc.o: tests/test_spsc.cpp.o
 .PHONY : tests/test_spsc.o
@@ -188,8 +225,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
+	@echo "... benchmark"
 	@echo "... test_spsc"
 	@echo "... test_spsc_tsan"
+	@echo "... benchmarks/benchmark.o"
+	@echo "... benchmarks/benchmark.i"
+	@echo "... benchmarks/benchmark.s"
 	@echo "... tests/test_spsc.o"
 	@echo "... tests/test_spsc.i"
 	@echo "... tests/test_spsc.s"

@@ -1,10 +1,10 @@
-Start testing: Sep 03 12:12 IST
+Start testing: Sep 03 16:11 IST
 ----------------------------------------------------------
 1/2 Testing: test_spsc
 1/2 Test: test_spsc
 Command: "/home/hegde/Desktop/lock_free_queues/build/test_spsc"
 Directory: /home/hegde/Desktop/lock_free_queues/build
-"test_spsc" start time: Sep 03 12:12 IST
+"test_spsc" start time: Sep 03 16:11 IST
 Output:
 ----------------------------------------------------------
 All tests passed!
@@ -12,7 +12,7 @@ All tests passed!
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"test_spsc" end time: Sep 03 12:12 IST
+"test_spsc" end time: Sep 03 16:11 IST
 "test_spsc" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -20,16 +20,16 @@ Test Passed.
 2/2 Test: test_spsc_tsan
 Command: "/home/hegde/Desktop/lock_free_queues/build/test_spsc_tsan"
 Directory: /home/hegde/Desktop/lock_free_queues/build
-"test_spsc_tsan" start time: Sep 03 12:12 IST
+"test_spsc_tsan" start time: Sep 03 16:11 IST
 Output:
 ----------------------------------------------------------
-FATAL: ThreadSanitizer: unexpected memory mapping 0x5d30fc326000-0x5d30fc328000
+FATAL: ThreadSanitizer: unexpected memory mapping 0x65278b1d7000-0x65278b1d9000
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Failed.
-"test_spsc_tsan" end time: Sep 03 12:12 IST
+"test_spsc_tsan" end time: Sep 03 16:11 IST
 "test_spsc_tsan" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 03 12:12 IST
+End testing: Sep 03 16:11 IST
